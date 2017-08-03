@@ -1,3 +1,9 @@
 baseURL: http://example.org/
 languageCode: en-us
-title: My New Hugo Site
+title: Some Cool Site
+
+outputs:
+  home: ["HTML", "JSON"]
+  section: ["HTML", "RSS", "JSON"]
+  page: ["HTML", "JSON"]
+  taxonomy: ["RSS"]

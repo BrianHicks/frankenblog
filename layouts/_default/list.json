@@ -1,0 +1,9 @@
+{
+    "kind": "section",
+    "links": {
+        "permalink": {{jsonify .Permalink}},
+        "html": "{{.URL}}",
+        "json": "{{.URL}}index.json"
+    },
+    "pages": [{{range $i, $page := .Pages}}{{if $i}},{{end}}{{partial "summary.json" $page}}{{end}}]
+}
