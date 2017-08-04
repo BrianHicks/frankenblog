@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <title>{{.Page.Title}} | {{.Site.Title}}</title>
+        <!-- TODO: elm init -->
+        <script>
+         (function() {
+             // this is kind of weird because Hugo and Go don't know that this
+             // is already valid JSON, which is a valid JavaScript object, so
+             // it's rendered as a string. Easy enough to fix, we'll just parse.
+             var page = JSON.parse({{partial "page.json" .}});
+
+             // set up our Elm application!
+             // TODO: yeah, but really do this... OK?
+             document.write(JSON.stringify(page));
+         })()
+        </script>
+    </head>
+    <body>
+        <div class="site"></div>
