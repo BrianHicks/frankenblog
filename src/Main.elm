@@ -2,11 +2,11 @@ module Main exposing (main)
 
 import Flags exposing (Flags)
 import Html exposing (Html)
-import Json.Encode as Encode
+import Json.Decode as Decode exposing (Value)
 
 
 type alias Model =
-    Flags
+    Result String Flags
 
 
 type Msg
@@ -20,13 +20,22 @@ update msg model =
 
 view : Model -> Html a
 view model =
-    model |> Encode.encode 2 |> Html.text
+    case model of
+        Err message ->
+            Html.div []
+                [ Html.p [] [ Html.text "I couldn't decode the JSON for this page! Whoops!" ]
+                , Html.p [] [ Html.text "I got this error:", Html.text message ]
+                ]
+
+        Ok stuff ->
+            Html.text <| toString stuff
 
 
-main : Program Flags Model Msg
+main : Program Value Model Msg
 main =
     Html.programWithFlags
-        { init = \flags -> flags ! []
+        { init =
+            \flags -> Decode.decodeValue Flags.flags flags ! []
         , update = update
         , view = view
         , subscriptions = \_ -> Sub.none
