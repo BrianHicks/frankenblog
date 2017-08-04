@@ -12,5 +12,6 @@
     "title": {{jsonify .Title}},
     "slug": {{jsonify .Slug}},
     "markdown": {{jsonify .RawContent}},
-    "summary": {{index (split .RawContent "<!--more-->") 0 | jsonify}}
+    "summary": {{index (split .RawContent "<!--more-->") 0 | jsonify}},
+    "site": {{partial "site.json" .}}
 }

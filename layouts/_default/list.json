@@ -5,5 +5,6 @@
         "html": "{{.URL}}",
         "json": "{{.URL}}index.json"
     },
-    "pages": [{{range $i, $page := .Pages}}{{if $i}},{{end}}{{partial "summary.json" $page}}{{end}}]
+    "pages": [{{range $i, $page := .Pages}}{{if $i}},{{end}}{{partial "summary.json" $page}}{{end}}],
+    "site": {{partial "site.json" .}}
 }
