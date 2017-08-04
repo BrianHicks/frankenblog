@@ -4,3 +4,4 @@ elm-stuff
 repl-temp-*
 public
 node_modules
+static/javascripts/site.js
