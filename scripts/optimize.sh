@@ -10,7 +10,7 @@ fi
 if echo "$FILENAME" | grep -qe ".html$"; then
     node scripts/render-elm.js "$FILENAME" "$DESTINATION"
 elif echo "$FILENAME" | grep -qe ".json$"; then
-    python -c "import json, sys; json.dump(json.load(sys.stdin), sys.stdout)" < "$FILENAME" > "$DESTINATION"
+    node scripts/minify-json.js "$FILENAME" "$DESTINATION"
 else
     cp "$FILENAME" "$DESTINATION"
 fi
