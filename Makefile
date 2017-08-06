@@ -3,7 +3,7 @@ all: optimized
 
 .PHONY: clean
 clean:
-	rm -rf public optimized elm-stuff node_modules || yes
+	rm -rf public optimized elm-stuff node_modules .elm-static-html || yes
 
 elm-stuff: elm-package.json
 	elm package install --yes
@@ -27,4 +27,4 @@ optimized: public
 
 optimized/%: public/% node_modules
 	@mkdir -p $(shell dirname $@)
-	./optimize.sh $< > $@
+	scripts/optimize.sh $< $@

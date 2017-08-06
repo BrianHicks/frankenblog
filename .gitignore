@@ -7,3 +7,4 @@ node_modules
 static/javascripts/site.js
 index.html
 optimized
+.elm-static-html

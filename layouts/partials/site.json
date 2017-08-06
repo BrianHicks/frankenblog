@@ -1,9 +1,8 @@
 {
     "title": {{jsonify .Site.Title}},
     "menus": {{jsonify .Site.Menus}},
-    "date": {
+    "dates": {
         "modified": {{jsonify .Site.LastChange}}
     },
-    "data": {{jsonify .Site.Data}},
     "params": {{jsonify .Site.Params}}
 }

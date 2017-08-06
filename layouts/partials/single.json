@@ -1,11 +1,11 @@
 {
-    "kind": "page",
+    "kind": "single",
     "links": {
         "permalink": {{jsonify .Permalink}},
         "html": "{{.URL}}",
         "json": "{{.URL}}index.json"
     },
-    "date": {
+    "dates": {
         "published": {{jsonify .Date}},
         "modified": {{jsonify .Lastmod}}
     },

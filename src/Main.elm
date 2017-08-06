@@ -1,12 +1,14 @@
 module Main exposing (main)
 
-import Flags exposing (Flags)
+import Decoder exposing (decoder)
 import Html exposing (Html)
 import Json.Decode as Decode exposing (Value)
+import Model
+import View
 
 
 type alias Model =
-    Result String Flags
+    Result String Model.Model
 
 
 type Msg
@@ -28,17 +30,14 @@ view model =
                 ]
 
         Ok stuff ->
-            Html.div []
-                [ Html.p [] [ Html.text "yo, I got this wack JSON (but I parsed it OK)" ]
-                , Html.p [] [ Html.text <| toString stuff ]
-                ]
+            View.view stuff
 
 
 main : Program Value Model Msg
 main =
     Html.programWithFlags
         { init =
-            \flags -> Decode.decodeValue Flags.flags flags ! []
+            \flags -> Decode.decodeValue decoder flags ! []
         , update = update
         , view = view
         , subscriptions = \_ -> Sub.none

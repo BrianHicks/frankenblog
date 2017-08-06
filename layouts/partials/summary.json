@@ -1,5 +1,5 @@
 {
-    "kind": "page",
+    "kind": "single",
     "links": {
         "permalink": {{jsonify .Permalink}},
         "html": "{{.URL}}",

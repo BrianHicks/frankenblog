@@ -5,7 +5,8 @@
   "main": "index.js",
   "dependencies": {
     "casperjs": "^1.1.4",
-    "phantomjs": "^2.1.7"
+    "elm-static-html-lib": "0.0.3",
+    "xmldom": "^0.1.27"
   },
   "devDependencies": {},
   "scripts": {
