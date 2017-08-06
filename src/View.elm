@@ -1,12 +1,19 @@
 module View exposing (..)
 
-import Html exposing (..)
-import Model exposing (Model)
+import Element exposing (..)
+import Element.Attributes exposing (..)
+import Html exposing (Html)
+import Model exposing (Model, Page(..))
+import Styles exposing (Styles(..), sheet)
 
 
 view : Model -> Html a
-view model =
-    Html.div []
-        [ Html.p [] [ Html.text "yo, I got this wack JSON (but I parsed it OK)" ]
-        , Html.p [] [ Html.text <| toString model ]
-        ]
+view (Single model) =
+    Element.viewport
+        sheet
+    <|
+        el Container
+            [ center
+            , padding 25
+            ]
+            (el Content [] (text model.markdown))
