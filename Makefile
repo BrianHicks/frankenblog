@@ -5,16 +5,16 @@ all: optimized
 clean:
 	rm -rf public optimized elm-stuff node_modules .elm-static-html || yes
 
-elm-stuff: elm-package.json
-	elm package install --yes
-
 node_modules: package.json
 	npm install
 
-static/javascripts/site.js: elm-stuff $(shell find src -type f -name '*.elm')
+elm-stuff: elm-package.json node_modules
+	./node_modules/.bin/elm package install --yes
+
+static/javascripts/site.js: elm-stuff $(shell find src -type f -name '*.elm') node_modules
 	test -d static/javscripts || mkdir -p static/javascripts
 	rm $@ || true
-	elm make --output $@ src/Main.elm
+	./node_modules/.bin/elm make --output $@ src/Main.elm
 
 public: static/javascripts/site.js $(shell find content layouts static -type f)
 	hugo
