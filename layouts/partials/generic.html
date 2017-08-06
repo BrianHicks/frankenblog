@@ -4,19 +4,21 @@
         <title>{{.Page.Title}} | {{.Site.Title}}</title>
     </head>
     <body>
-        <div class="site"></div>
+        <div id="site"></div>
         <script src="/javascripts/site.js"></script>
         <script>
          (function() {
-             // this is kind of weird because Hugo and Go don't know that this
-             // is already valid JSON, which is a valid JavaScript object, so
-             // it's rendered as a string. Easy enough to fix, we'll just parse.
-             //
-             // TODO: compact this by loading and dumping as JSON with no spaces
-             var page = JSON.parse({{partial (printf "%s.json" .Kind) .}});
+             function start() {
+                 var app = Elm.Main.embed(
+                     document.getElementById("site"),
+                     JSON.parse(req.response)
+                 );
+             };
 
-             // set up our Elm application!
-             app = Elm.Main.fullscreen(page);
+             req = new XMLHttpRequest();
+             req.addEventListener("load", start);
+             req.open("GET", "index.json");
+             req.send();
          })()
         </script>
     </body>

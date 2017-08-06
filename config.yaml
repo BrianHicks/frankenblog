@@ -1,6 +1,7 @@
 baseURL: http://example.org/
 languageCode: en-us
 title: Some Cool Site
+sectionPagesMenu: "main"
 
 outputs:
   home: ["HTML", "JSON"]

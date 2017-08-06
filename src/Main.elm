@@ -28,7 +28,10 @@ view model =
                 ]
 
         Ok stuff ->
-            Html.text <| toString stuff
+            Html.div []
+                [ Html.p [] [ Html.text "yo, I got this wack JSON (but I parsed it OK)" ]
+                , Html.p [] [ Html.text <| toString stuff ]
+                ]
 
 
 main : Program Value Model Msg
