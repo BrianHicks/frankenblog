@@ -1,0 +1,6 @@
+[build]
+  publish = "optimized"
+  command = "make"
+
+[context.environment]
+  HUGO_VERSION = "0.25"
